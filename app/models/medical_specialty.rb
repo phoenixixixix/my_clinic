@@ -1,0 +1,2 @@
+class MedicalSpecialty < ApplicationRecord
+end
