@@ -1,7 +1,7 @@
 class Recommendation < ApplicationRecord
   belongs_to :appointment
 
-  after_commit :update_appointment_status
+  after_create :update_appointment_status
 
   private
 
