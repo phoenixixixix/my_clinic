@@ -11,7 +11,10 @@ class AppointmentsController < ApplicationController
     @appointment = current_user.appointments.build
     @appointment.doctor_id = params[:doctor_id]
 
-    @appointment.save
-    redirect_to appointment_path(@appointment)
+    if @appointment.save
+      redirect_to appointment_path(@appointment)
+    else
+      redirect_to root_path
+    end
   end
 end

@@ -12,19 +12,21 @@ RSpec.describe Appointment, type: :model do
 
   it { expect(subject).to be_valid }
 
-  describe "Status value" do
-    before do
-      subject.recommendation.destroy if subject.recommendation
-      subject.opened!
-    end
+  describe "Attributes" do
+    describe "Status" do
+      before do
+        subject.recommendation.destroy if subject.recommendation
+        subject.opened!
+      end
 
-    it { expect(subject.opened?).to be_truthy}
+      it { expect(subject.opened?).to be_truthy}
 
-    it "should update status on create Recommendation" do
-      subject.create_recommendation!(diagnosis: "Closes Status", instruction: "Test")
+      it "should update status on create Recommendation" do
+        subject.create_recommendation!(diagnosis: "Closes Status", instruction: "Test")
 
-      expect(subject.recommendation.diagnosis).to eq("Closes Status")
-      expect(subject.closed?).to be_truthy
+        expect(subject.recommendation.diagnosis).to eq("Closes Status")
+        expect(subject.closed?).to be_truthy
+      end
     end
   end
 
