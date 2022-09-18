@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
-  devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  devise_for :users, controllers: {
+    registrations: "patients/registrations"
+  }
+  resources :patients, only: [:show]
+  resources :doctors, only: [:show, :index]
+  resources :appointments, only: [:show, :create, :index] do
+    resource :recommendations, only: [:new, :create]
+  end
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  authenticated do
+    root to: "appointments#index", as: :authenticated_root
+  end
+
+  root "welcome#show"
 end
