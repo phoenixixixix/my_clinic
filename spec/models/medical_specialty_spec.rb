@@ -11,16 +11,33 @@ RSpec.describe MedicalSpecialty, type: :model do
 
   describe "Validations" do
     describe "Attributes" do
-      context "uniqueness validation" do
-        it "should not create MedicalSpecialty with the same Title" do
+      context "title uniqueness validation" do
+        it "should be invalid when Medical Specialty with not unique Title" do
           subject.title = "Unique Title"
           subject.save
 
           test_ms = MedicalSpecialty.new(title: subject.title)
 
-          expect(test_ms.title).to eq(subject.title)
           expect(test_ms).to be_invalid
           expect(test_ms.errors.full_messages).to include("Title has already been taken")
+        end
+
+        it "should not create Medical Specialty with not unique Title" do
+          subject.title = "Unique Title"
+          subject.save
+
+          expect{
+            MedicalSpecialty.create(title: subject.title)
+          }.not_to change { MedicalSpecialty.count }
+        end
+      end
+
+      context "title presence validation" do
+        it "should be invalid without Title" do
+          subject.title = ""
+
+          expect(subject).to be_invalid
+          expect(subject.errors.full_messages).to include("Title can't be blank")
         end
       end
     end

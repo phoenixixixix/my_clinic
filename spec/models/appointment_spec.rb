@@ -31,22 +31,6 @@ RSpec.describe Appointment, type: :model do
   end
 
   describe "Relations" do
-    context "belonging" do
-      it "should be invalid without patient" do
-        subject.patient = nil
-
-        expect(subject).to be_invalid
-        expect(subject.errors.full_messages).to include("Patient must exist")
-      end
-
-      it "should be invalid without doctor" do
-        subject.doctor = nil
-
-        expect(subject).to be_invalid
-        expect(subject.errors.full_messages).to include("Doctor must exist")
-      end
-    end
-
     context "has one Recommendation" do
       let(:recommendation) { build(:recommendation, diagnosis: "Existing")}
 
