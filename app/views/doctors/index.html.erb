@@ -1,0 +1,13 @@
+<h1>Doctors list</h1>
+<table>
+  <tr>
+    <th>doctors email</th>
+    <th></th>
+  </tr>
+    <% @doctors.each do |d| %>
+    <tr>
+      <td><%= d.email %></td>
+      <td><%= button_to "Make Appointment", appointments_path(doctor_id: d.id), method: :post %></td>
+    </tr>
+    <% end %>
+</table>

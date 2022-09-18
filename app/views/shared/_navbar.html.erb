@@ -1,0 +1,14 @@
+<% if user_signed_in? %>
+  <table>
+    <tr>
+      <% if current_user.doctor? %>
+        <td><%= link_to "D_Profile", doctor_path(current_user) %></td>
+      <% else %>
+        <td><%= link_to "P_Profile", patient_path(current_user) %></td>
+        <td><%= link_to "Doctros list", doctors_path %></td>
+      <% end %>
+        <td><%= link_to "Appointments", appointments_path %></td>
+      <td><%= button_to "Sign Out", destroy_user_session_path, method: :delete %></td>
+    </tr>
+  </table>
+<% end %>

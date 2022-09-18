@@ -1,0 +1,13 @@
+<%= form_with model: [@appointment, @recommendation] do |f| %>
+  <div>
+    <%= f.label :diagnosis %>
+    <%= f.text_area :diagnosis %>
+  </div>
+
+  <div>
+    <%= f.label :instruction %>
+    <%= f.text_area :instruction %>
+  </div>
+
+  <%= f.submit "Add Recommendation" %>
+<% end %>
