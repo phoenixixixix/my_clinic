@@ -1,7 +1,5 @@
 class PatientsController < ApplicationController
-  before_action :authenticate_user!
+  load_and_authorize_resource
 
-  def show
-    @patient = Patient.find(params[:id])
-  end
+  def show; end
 end

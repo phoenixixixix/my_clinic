@@ -1,11 +1,10 @@
 class AppointmentsController < ApplicationController
+  load_and_authorize_resource
   def index
     @appointments = current_user.appointments
   end
 
-  def show
-    @appointment = Appointment.find(params[:id])
-  end
+  def show; end
 
   def create
     @appointment = current_user.appointments.build
@@ -14,7 +13,7 @@ class AppointmentsController < ApplicationController
     if @appointment.save
       redirect_to appointment_path(@appointment)
     else
-      redirect_to root_path
+      redirect_to authenticated_root_path
     end
   end
 end

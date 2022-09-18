@@ -7,7 +7,10 @@
     <% @doctors.each do |d| %>
     <tr>
       <td><%= d.email %></td>
-      <td><%= button_to "Make Appointment", appointments_path(doctor_id: d.id), method: :post %></td>
+
+      <% if can? :create, Appointment %>
+        <td><%= button_to "Make Appointment", appointments_path(doctor_id: d.id), method: :post %></td>
+      <% end %>
     </tr>
     <% end %>
 </table>

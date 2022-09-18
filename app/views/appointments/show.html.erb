@@ -1,12 +1,12 @@
 <h1>Appointment #<%= @appointment.id %></h1>
 <p><%= @appointment.patient.email %> -- <%= @appointment.doctor.email %></p>
 
-<% if !@appointment.recommendation.nil? %>
+<% if @appointment.recommendation %>
   <h3>Recommendation</h3>
   <p>Diagnosis: <%= @appointment.recommendation.diagnosis %></p>
   <p>Instructions:</p>
   <p><%= @appointment.recommendation.instruction %></p>
 
-<% elsif current_user.doctor? %>
+<% elsif can? :create, Recommendation %>
   <%= link_to "Add Recommendation", new_appointment_recommendations_path(appointment_id: @appointment.id) %>
 <% end %>

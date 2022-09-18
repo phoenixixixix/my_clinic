@@ -1,9 +1,7 @@
 class DoctorsController < ApplicationController
-  before_action :authenticate_user!
+  load_and_authorize_resource
 
-  def show
-    @doctor = Doctor.find(params[:id])
-  end
+  def show; end
 
   def index
     @doctors = Doctor.all

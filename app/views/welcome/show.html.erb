@@ -1,5 +1,7 @@
 <h1>Hello Clinica</h1>
-<% unless user_signed_in? %>
+<% if user_signed_in? %>
+  <%= link_to "Home", authenticated_root_path %>
+<% else %>
   <%= link_to "Register as Patient", new_user_registration_path %>
   <%= link_to "Sign in", new_user_session_path %>
 <% end %>
