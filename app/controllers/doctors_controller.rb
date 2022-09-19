@@ -4,6 +4,7 @@ class DoctorsController < ApplicationController
   def show; end
 
   def index
-    @doctors = Doctor.all
+    @doctors = sort_doctors_by_category(Doctor.all, params[:category_title])
+    @categories = MedicalSpecialty.all
   end
 end

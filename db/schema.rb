@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_19_103534) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_19_150906) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,7 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_19_103534) do
   create_table "doctors_medical_specialties", id: false, force: :cascade do |t|
     t.bigint "doctor_id"
     t.bigint "medical_specialty_id"
-    t.index ["doctor_id"], name: "index_doctors_medical_specialties_on_doctor_id", unique: true
+    t.index ["doctor_id"], name: "index_doctors_medical_specialties_on_doctor_id"
     t.index ["medical_specialty_id"], name: "index_doctors_medical_specialties_on_medical_specialty_id"
   end
 
