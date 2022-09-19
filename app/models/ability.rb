@@ -6,8 +6,6 @@ class Ability
   def initialize(user)
     return unless user.present?
 
-    # can :manage, :all if user.admin?
-
     if user.patient?
       can :show, Patient, id: user.id
       can :index, Doctor

@@ -16,6 +16,10 @@ Rails.application.routes.draw do
     root to: "doctors#index"
   end
 
+  authenticated :user, lambda {|u| u.admin? } do
+    root to: "admin/doctors#index", as: :user_root
+  end
+
   authenticated do
     root to: "appointments#index", as: :authenticated_root
   end
