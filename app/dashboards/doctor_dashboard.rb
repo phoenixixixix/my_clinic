@@ -67,7 +67,7 @@ class DoctorDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how doctors are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(doctor)
-  #   "Doctor ##{doctor.id}"
-  # end
+  def display_resource(doctor)
+    "Doctor ##{doctor.email}"
+  end
 end

@@ -57,7 +57,7 @@ class MedicalSpecialtyDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how medical specialties are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(medical_specialty)
-  #   "MedicalSpecialty ##{medical_specialty.id}"
-  # end
+  def display_resource(medical_specialty)
+    "MedicalSpecialty ##{medical_specialty.title}"
+  end
 end
