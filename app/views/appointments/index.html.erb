@@ -1,7 +1,66 @@
-<h1>Appointments</h1>
+<h1>My Appointments</h1>
 
-<ul>
-  <% @appointments.each do |a| %>
-      <li><%= a.patient.email %> -- <%= a.doctor.email %> | <%= link_to "Show", appointment_path(a) %></li>
-  <% end %>
-</ul>
+<div class="row">
+  <div class="col-md-6">
+    <h3>Opened</h3>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <% if current_user.doctor? %>
+          <th scope="col">Patient</th>
+        <% else %>
+          <th scope="col">Doctor</th>
+        <% end %>
+        <th scope="col">Status</th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+        <% @appointments.each do |appointment| %>
+          <tr>
+            <th scope="row"><%= appointment.id %></th>
+            <% if current_user.doctor? %>
+              <td><%= appointment.patient.email %></td>
+            <% else %>
+              <td><%= appointment.doctor.email %></td>
+            <% end %>
+            <td><%= appointment.status %></td>
+            <td><%= link_to "Show", appointment_path(appointment), class: "btn btn-primary" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-6">
+    <h3>Closed</h3>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <% if current_user.doctor? %>
+          <th scope="col">Patient</th>
+        <% else %>
+          <th scope="col">Doctor</th>
+        <% end %>
+        <th scope="col">Status</th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @appointments.closed.each do |appointment| %>
+        <tr>
+          <th scope="row"><%= appointment.id %></th>
+          <% if current_user.doctor? %>
+            <td><%= appointment.patient.email %></td>
+          <% else %>
+            <td><%= appointment.doctor.email %></td>
+          <% end %>
+          <td><%= appointment.status %></td>
+          <td><%= link_to "Check Recommendation", appointment_path(appointment), class: "btn btn-primary" %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

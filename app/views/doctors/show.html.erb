@@ -1,2 +1,22 @@
 <h1><%= @doctor.type %></h1>
-<p><%= @doctor.email %></p>
+<p>Email: <%= @doctor.email %></p>
+
+<h3>Latest opened Appointments</h3>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Patient</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @doctor.appointments.opened.last(5).each do |appointment| %>
+    <tr>
+      <th scope="row"><%= appointment.id %></th>
+      <td><%= appointment.patient.email %></td>
+      <td><%= link_to "Show", appointment_path(appointment), class: "btn btn-primary" %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

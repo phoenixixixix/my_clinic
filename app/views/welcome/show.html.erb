@@ -1,7 +1,9 @@
-<h1>Hello Clinica</h1>
-<% if user_signed_in? %>
-  <%= link_to "Home", authenticated_root_path %>
-<% else %>
-  <%= link_to "Register as Patient", new_user_registration_path %>
-  <%= link_to "Sign in", new_user_session_path %>
-<% end %>
+<div class="text-center mt-5">
+  <h1>My Clinica</h1>
+  <% if user_signed_in? %>
+    <%= link_to "Home", authenticated_root_path, class: "btn btn-success" %>
+  <% else %>
+    <%= link_to "Register to create Patient Account", new_user_registration_path, class: "btn btn-primary" %>
+    <%= link_to "Sign in to existing Account", new_user_session_path, class: "btn btn-primary" %>
+  <% end %>
+</div>

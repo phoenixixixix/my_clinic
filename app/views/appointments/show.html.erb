@@ -1,12 +1,19 @@
-<h1>Appointment #<%= @appointment.id %></h1>
-<p><%= @appointment.patient.email %> -- <%= @appointment.doctor.email %></p>
+<div class="row">
+  <div class="col-6">
+    <h1>Appointment #<%= @appointment.id %> - <%= @appointment.status %></h1>
+    <p>Assigned Patient: <%= @appointment.patient.email %></p>
+    <p>Assigned Doctor: <%= @appointment.doctor.email %></p>
 
-<% if @appointment.recommendation %>
-  <h3>Recommendation</h3>
-  <p>Diagnosis: <%= @appointment.recommendation.diagnosis %></p>
-  <p>Instructions:</p>
-  <p><%= @appointment.recommendation.instruction %></p>
+    <% if @appointment.recommendation %>
+      <h3 class="text-success">Recommendation</h3>
+      <p>Diagnosis: <%= @appointment.recommendation.diagnosis %></p>
+      <p>Instructions:</p>
+      <p class="bg-light"><%= @appointment.recommendation.instruction %></p>
 
-<% elsif can? :create, Recommendation %>
-  <%= link_to "Add Recommendation", new_appointment_recommendations_path(appointment_id: @appointment.id) %>
-<% end %>
+    <% elsif can? :create, Recommendation %>
+      <%= link_to "Add Recommendation", new_appointment_recommendations_path(appointment_id: @appointment.id), class: "btn btn-primary mt-3" %>
+    <% else %>
+      <p class="text-warning">No recommendation yet</p>
+    <% end %>
+  </div>
+</div>

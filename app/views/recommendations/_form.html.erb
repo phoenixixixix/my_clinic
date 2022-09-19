@@ -1,13 +1,17 @@
-<%= form_with model: [@appointment, @recommendation] do |f| %>
-  <div>
-    <%= f.label :diagnosis %>
-    <%= f.text_area :diagnosis %>
-  </div>
+<div class="row">
+  <div class="col-sm-6">
+    <%= form_with model: [@appointment, @recommendation] do |f| %>
+      <div class="form-group">
+        <%= f.label :diagnosis %>
+        <%= f.text_area :diagnosis, class: "form-control" %>
+      </div>
 
-  <div>
-    <%= f.label :instruction %>
-    <%= f.text_area :instruction %>
-  </div>
+      <div class="form-group">
+        <%= f.label :instruction %>
+        <%= f.text_area :instruction, class: "form-control" %>
+      </div>
 
-  <%= f.submit "Add Recommendation" %>
-<% end %>
+      <%= f.submit "Add Recommendation", class: "btn btn-success mt-3" %>
+    <% end %>
+  </div>
+</div>

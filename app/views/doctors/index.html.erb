@@ -1,16 +1,21 @@
-<h1>Doctors list</h1>
-<table>
+<h1>Doctors List</h1>
+<table class="table">
+  <thead>
   <tr>
-    <th>doctors email</th>
-    <th></th>
+    <th scope="col">#</th>
+    <th scope="col">Email</th>
+    <th scope="col"></th>
   </tr>
-    <% @doctors.each do |d| %>
+  </thead>
+  <tbody>
+  <% @doctors.each do |doctor| %>
     <tr>
-      <td><%= d.email %></td>
-
+      <th scope="row"><%= doctor.id %></th>
+      <td><%= doctor.email %></td>
       <% if can? :create, Appointment %>
-        <td><%= button_to "Make Appointment", appointments_path(doctor_id: d.id), method: :post %></td>
+        <td><%= button_to "Make Appointment", appointments_path(doctor_id: doctor.id), method: :post, class: "btn btn-primary" %></td>
       <% end %>
     </tr>
-    <% end %>
+  <% end %>
+  </tbody>
 </table>
