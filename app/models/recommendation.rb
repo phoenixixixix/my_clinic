@@ -3,6 +3,7 @@ class Recommendation < ApplicationRecord
 
   after_create :update_appointment_status
 
+  validates :diagnosis, :instruction, presence: true
   private
 
   def update_appointment_status

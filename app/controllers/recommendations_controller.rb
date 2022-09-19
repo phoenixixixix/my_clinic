@@ -10,8 +10,9 @@ class RecommendationsController < ApplicationController
     @recommendation = @appointment.build_recommendation(recommendation_params)
 
     if @recommendation.save
-      redirect_to @recommendation.appointment
+      redirect_to @recommendation.appointment, notice: "Recommendation Created!"
     else
+      flash.now[:error] = "Not saved! #{@recommendation.errors.full_messages.join(", ")}"
       render "new"
     end
   end

@@ -11,9 +11,9 @@ class AppointmentsController < ApplicationController
     @appointment.doctor_id = params[:doctor_id]
 
     if @appointment.save
-      redirect_to appointment_path(@appointment)
+      redirect_to appointment_path(@appointment), notice: "Appointment to #{@appointment.doctor.email} created!"
     else
-      redirect_to authenticated_root_path
+      redirect_to authenticated_root_path, alert: "#{@appointment.errors.full_messages.join(", ")}"
     end
   end
 end
