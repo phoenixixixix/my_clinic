@@ -8,6 +8,17 @@ Rails.application.routes.draw do
     resource :recommendations, only: [:new, :create]
   end
 
+  namespace :admin do
+    resources :recommendations
+    resources :medical_specialties
+    resources :appointments
+    resources :users
+    resources :patients
+    resources :doctors
+
+    root to: "recommendations#index"
+  end
+
   authenticated do
     root to: "appointments#index", as: :authenticated_root
   end
