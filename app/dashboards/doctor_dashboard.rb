@@ -16,6 +16,7 @@ class DoctorDashboard < Administrate::BaseDashboard
     encrypted_password: Field::String,
     patients: Field::HasMany,
     appointments: Field::HasMany,
+    categories: Field::HasMany,
     remember_created_at: Field::DateTime,
     reset_password_sent_at: Field::DateTime,
     reset_password_token: Field::String,
@@ -31,6 +32,7 @@ class DoctorDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
     id
     email
+    categories
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -38,7 +40,7 @@ class DoctorDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     id
     email
-    type
+    categories
     created_at
     updated_at
   ].freeze
@@ -68,6 +70,6 @@ class DoctorDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(doctor)
-    "Doctor ##{doctor.email}"
+    "Doctor: #{doctor.email}"
   end
 end

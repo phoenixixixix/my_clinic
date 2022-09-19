@@ -58,6 +58,6 @@ class MedicalSpecialtyDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(medical_specialty)
-    "MedicalSpecialty ##{medical_specialty.title}"
+    "Category: #{medical_specialty.title}"
   end
 end
