@@ -24,7 +24,6 @@ class MedicalSpecialtyDashboard < Administrate::BaseDashboard
     id
     doctors
     title
-    created_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -33,16 +32,14 @@ class MedicalSpecialtyDashboard < Administrate::BaseDashboard
     id
     doctors
     title
-    created_at
-    updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    doctors
     title
+    doctors
   ].freeze
 
   # COLLECTION_FILTERS

@@ -9,14 +9,11 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :recommendations
-    resources :medical_specialties
-    resources :appointments
-    resources :users
-    resources :patients
     resources :doctors
+    resources :patients
+    resources :medical_specialties
 
-    root to: "recommendations#index"
+    root to: "doctors#index"
   end
 
   authenticated do
